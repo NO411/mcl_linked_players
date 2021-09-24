@@ -110,7 +110,8 @@ minetest.register_globalstep(function(dtime)
 				end
 			end
 		end
-                if player:get_player_control().LMB then
+		local ctr = player:get_player_control()
+                if ctr.LMB or ctr.RMB then
                         local item = player:get_wielded_item():get_name()
                         local def = minetest.registered_items[item]
                         if minetest.registered_tools[item] or def.on_place or def.on_secondary_use or def.on_use or def.after_use then
