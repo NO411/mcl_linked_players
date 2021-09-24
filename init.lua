@@ -9,20 +9,14 @@ function mcl_linked_players.sync_invs(player, reversed)
                 local name = player:get_player_name()
                 local inv = player:get_inventory()
                 local cplayers = minetest.get_connected_players()
-                if reversed then
-                        for _, nplayer in pairs(cplayers) do
-                                local nname = nplayer:get_player_name()
-                                if name ~= nname then
-                                        local inv1 = nplayer:get_inventory()
+                for _, nplayer in pairs(cplayers) do
+                        local nname = nplayer:get_player_name()
+                        if name ~= nname then
+                                local inv1 = nplayer:get_inventory()
+                                if reversed then
                                         sync_inv_lists(inv, inv1)
                                         break
-                                end
-                        end
-                else
-                        for _, nplayer in pairs(cplayers) do
-                                local nname = nplayer:get_player_name()
-                                if name ~= nname then
-                                        local inv1 = nplayer:get_inventory()
+                                else
                                         sync_inv_lists(inv1, inv)
                                 end
                         end
